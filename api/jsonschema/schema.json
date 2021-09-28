@@ -4076,6 +4076,10 @@
           "description": "FromExpression, if defined, is evaluated to specify the value for the artifact",
           "type": "string"
         },
+        "fromMulti": {
+          "description": "FromMulti, if defined, allows an artifact to reference multi artifacts from a previous loop step",
+          "type": "string"
+        },
         "gcs": {
           "$ref": "#/definitions/io.argoproj.workflow.v1alpha1.GCSArtifact",
           "description": "GCS contains GCS artifact location details"
@@ -4114,6 +4118,10 @@
         },
         "path": {
           "description": "Path is the container path to the artifact",
+          "type": "string"
+        },
+        "pathMulti": {
+          "description": "PathMulti, if defined, is the container path template with {{index}} to the multi artifacts",
           "type": "string"
         },
         "raw": {
@@ -4203,6 +4211,10 @@
           "description": "FromExpression, if defined, is evaluated to specify the value for the artifact",
           "type": "string"
         },
+        "fromMulti": {
+          "description": "FromMulti, if defined, allows an artifact to reference multi artifacts from a previous loop step",
+          "type": "string"
+        },
         "gcs": {
           "$ref": "#/definitions/io.argoproj.workflow.v1alpha1.GCSArtifact",
           "description": "GCS contains GCS artifact location details"
@@ -4241,6 +4253,10 @@
         },
         "path": {
           "description": "Path is the container path to the artifact",
+          "type": "string"
+        },
+        "pathMulti": {
+          "description": "PathMulti, if defined, is the container path template with {{index}} to the multi artifacts",
           "type": "string"
         },
         "raw": {
