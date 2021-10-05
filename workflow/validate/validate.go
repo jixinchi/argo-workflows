@@ -896,6 +896,8 @@ func (ctx *templateValidationCtx) addOutputsToScope(tmpl *wfv1.Template, prefix 
 			scope[fmt.Sprintf("%s.exitCode", prefix)] = true
 		default:
 			scope[fmt.Sprintf("%s.outputs.parameters", prefix)] = true
+			scope[fmt.Sprintf("%s.outputs.artifacts", prefix)] = true
+			scope[fmt.Sprintf("%s.outputs", prefix)] = true
 		}
 	}
 	if isAncestor {
