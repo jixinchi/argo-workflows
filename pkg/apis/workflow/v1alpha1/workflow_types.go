@@ -8,6 +8,7 @@ import (
 	"path"
 	"reflect"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
 
@@ -2559,9 +2560,14 @@ func (in *Inputs) GetParameterByName(name string) *Parameter {
 func (args *Inputs) GetArtifactsByNameWithoutIndex(name string) []Artifact {
 	res := make([]Artifact, 0)
 	for _, art := range args.Artifacts {
+		if art.Name == name {
+			return []Artifact{art}
+		}
 		splitStr := strings.SplitN(art.Name, "_", 2)
 		if len(splitStr) == 2 && name == splitStr[1] {
-			res = append(res, art)
+			if _, err := strconv.Atoi(splitStr[0]); err != nil {
+				res = append(res, art)
+			}
 		}
 	}
 	return res
@@ -2621,9 +2627,14 @@ func (args *Arguments) GetParameterByName(name string) *Parameter {
 func (args *Arguments) GetArtifactsByNameWithoutIndex(name string) []Artifact {
 	res := make([]Artifact, 0)
 	for _, art := range args.Artifacts {
+		if art.Name == name {
+			return []Artifact{art}
+		}
 		splitStr := strings.SplitN(art.Name, "_", 2)
 		if len(splitStr) == 2 && name == splitStr[1] {
-			res = append(res, art)
+			if _, err := strconv.Atoi(splitStr[0]); err == nil {
+				res = append(res, art)
+			}
 		}
 	}
 	return res

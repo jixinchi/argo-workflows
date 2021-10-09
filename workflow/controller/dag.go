@@ -598,6 +598,9 @@ func (woc *wfOperationCtx) resolveDependencyReferences(dagCtx *dagContext, task 
 			if err != nil {
 				return nil, err
 			}
+			if len(arts) == 0 {
+				return nil, errors.New(errors.CodeInternal, "no fromMulti artifacts")
+			}
 			aggregateArts[j] = arts
 			continue
 		}
@@ -631,9 +634,6 @@ func resolveAggregateArtifacts(art *wfv1.Artifact) ([]wfv1.Artifact, error) {
 	var arts []wfv1.Artifact
 	if err := json.Unmarshal([]byte(art.FromMulti), &arts); err != nil {
 		return nil, errors.InternalWrapError(err)
-	}
-	if len(arts) == 0 {
-		return nil, errors.New(errors.CodeInternal, "no fromMulti artifacts")
 	}
 	for i := range arts {
 		arts[i].Name = fmt.Sprintf("%d_%s", i, art.Name)
