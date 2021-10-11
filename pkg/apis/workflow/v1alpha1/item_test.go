@@ -11,12 +11,12 @@ import (
 
 func TestItem(t *testing.T) {
 	for data, expectedType := range map[string]Type{
-		"0":                                                          Number,
-		"3.141":                                                      Number,
-		"true":                                                       Bool,
-		"\"hello\"":                                                  String,
-		"{\"val\":\"123\"}":                                          Map,
-		"[\"1\",\"2\",\"3\",\"4\",\"5\"]":                            List,
+		"0":                               Number,
+		"3.141":                           Number,
+		"true":                            Bool,
+		"\"hello\"":                       String,
+		"{\"val\":\"123\"}":               Map,
+		"[\"1\",\"2\",\"3\",\"4\",\"5\"]": List,
 		"{\"name\":\"test\",\"path\":\"/tmp/path\"}":                 ArtifactType,
 		"{\"parameters\":[{\"name\":\"test\",\"value\":\"value\"}]}": OutputsType,
 	} {
